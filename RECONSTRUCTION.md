@@ -3,5 +3,5 @@
 This repository is a new reference implementation informed by the
 publication's described methodology. It is not represented as the
 original experiment code. Published results and local reproduction
-results are kept separate. Paper-specific details will be reconciled
-after the author manuscript is added.
+results are kept separate. The manuscript was reviewed on June 11, 2026;
+`PAPER_SPEC.md` records the implemented protocol and remaining limitations.

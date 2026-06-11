@@ -1,4 +1,55 @@
 {
-  "image_size": 128,
-  "nominal_cells": 18
+  "paper_model_configs": {
+    "centermask2": {
+      "backbone": "ResNet-50-FPN",
+      "batch_size": 8,
+      "confidence_threshold": 0.5,
+      "family": "cnn",
+      "iterations": 9150,
+      "learning_rate": 0.01
+    },
+    "fastinst": {
+      "batch_size": 8,
+      "checkpoint_period": 200,
+      "evaluation_iteration": 4575,
+      "family": "transformer",
+      "iterations": 9150,
+      "learning_rate": 0.0001
+    },
+    "mask2former": {
+      "backbone": "ResNet-50",
+      "batch_size": 6,
+      "checkpoint_period": 200,
+      "family": "transformer",
+      "iterations": 12200,
+      "learning_rate": 0.0001
+    },
+    "mask_rcnn": {
+      "backbone": "ResNet-50-FPN",
+      "batch_size": 8,
+      "checkpoint_period": 152,
+      "confidence_threshold": 0.5,
+      "family": "cnn",
+      "iterations": 9150,
+      "learning_rate": 0.02,
+      "workers": 8
+    },
+    "maskdino": {
+      "backbone": "ResNet-50",
+      "batch_size": 8,
+      "checkpoint_period": 200,
+      "confidence_threshold": 0.5,
+      "family": "transformer",
+      "iterations": 9150,
+      "learning_rate": 0.0001
+    },
+    "yolact_plus_plus": {
+      "backbone": "ResNet-50",
+      "batch_size": 16,
+      "checkpoint_period": 76,
+      "family": "cnn",
+      "iterations": 9150,
+      "validation_period_epochs": 2
+    }
+  }
 }

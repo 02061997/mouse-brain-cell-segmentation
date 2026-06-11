@@ -4,7 +4,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from .artifacts import environment, output_dir, save
-from .core import metrics, segment, synthetic_image
+from .core import (
+    MODEL_CONFIGS,
+    PUBLISHED_COLUMNS,
+    PUBLISHED_RESULTS,
+    coco_record,
+    evaluate_instances,
+    reference_segment,
+    synthetic_image,
+)
 
 
 def main():
@@ -12,36 +20,53 @@ def main():
     parser.add_argument("--smoke", action="store_true")
     args = parser.parse_args()
     out = output_dir(args.smoke)
-    seeds = range(3) if args.smoke else range(40)
+    seeds = range(3 if args.smoke else 30)
     rows = []
     example = None
     for seed in seeds:
         image, truth = synthetic_image(seed=seed)
-        prediction = segment(image)
-        rows.append({"seed": seed, **metrics(truth, prediction)})
+        prediction = reference_segment(image)
+        rows.append({"seed": seed, **evaluate_instances(truth, prediction)})
         if seed == 0:
             example = image, truth, prediction
+            save(out / "synthetic_coco.json", coco_record(1, image, truth))
     frame = pd.DataFrame(rows)
     frame.to_parquet(out / "predictions.parquet", index=False)
-    fig, axes = plt.subplots(1, 3, figsize=(10, 3))
-    for ax, value, title in zip(
-        axes, example, ["Synthetic fluorescence", "Ground truth", "Prediction"]
+    fig, axes = plt.subplots(1, 3, figsize=(11, 3))
+    axes[0].imshow(example[0])
+    axes[0].set_title("Synthetic merged channels")
+    for ax, instances, title in zip(
+        axes[1:], example[1:], ["Ground-truth instances", "Reference predictions"]
     ):
-        ax.imshow(value, cmap="gray")
+        ax.imshow(sum((item.mask for item in instances), start=0), cmap="viridis")
         ax.set_title(title)
+    for ax in axes:
         ax.axis("off")
     fig.tight_layout()
     fig.savefig(out / "qualitative_example.png", dpi=180)
     plt.close(fig)
-    summary = frame.drop(columns="seed").agg(["mean", "std"]).to_dict()
-    save(out / "metrics.json", summary)
-    save(out / "statistical_tests.json", {"images": len(frame)})
+    save(out / "metrics.json", frame.drop(columns="seed").agg(["mean", "std"]).to_dict())
+    save(
+        out / "statistical_tests.json",
+        {
+            "published_results": {
+                model: dict(zip(PUBLISHED_COLUMNS, values, strict=True))
+                for model, values in PUBLISHED_RESULTS.items()
+            },
+            "published_results_reproduced": False,
+        },
+    )
     save(out / "environment.json", environment())
     save(
         out / "data_manifest.json",
-        {"source": "deterministic synthetic fluorescence generator", "images": len(frame)},
+        {
+            "paper_dataset": {"images": 1050, "train": 700, "validation": 200, "test": 150},
+            "paper_dataset_included": False,
+            "local_source": "deterministic six-class synthetic fluorescence fixture",
+            "local_images": len(frame),
+        },
     )
-    save(out / "config.yaml", {"image_size": 128, "nominal_cells": 18})
+    save(out / "config.yaml", {"paper_model_configs": MODEL_CONFIGS})
     (out / "run.log").write_text("completed\n")
     print(out)
 

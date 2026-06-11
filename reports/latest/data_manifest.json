@@ -1,4 +1,11 @@
 {
-  "images": 40,
-  "source": "deterministic synthetic fluorescence generator"
+  "local_images": 30,
+  "local_source": "deterministic six-class synthetic fluorescence fixture",
+  "paper_dataset": {
+    "images": 1050,
+    "test": 150,
+    "train": 700,
+    "validation": 200
+  },
+  "paper_dataset_included": false
 }

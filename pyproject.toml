@@ -1,7 +1,7 @@
 [project]
       name = "mouse-brain-cell-segmentation"
       version = "1.0.0"
-      description = "Reference microscopy segmentation benchmark with synthetic fluorescence data."
+      description = "Six-class COCO instance-segmentation companion for mouse fluorescence microscopy research."
       requires-python = ">=3.12,<3.13"
       dependencies = [
         "matplotlib>=3.9",

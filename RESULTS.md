@@ -1,24 +1,18 @@
-# Verified Results
+# Results
 
-## Provenance
+## Published paper results
 
-This is a reconstructed reference implementation evaluated on deterministic
-synthetic microscopy images. It is not the original research implementation,
-and no biological-performance claim is made.
+Mask2Former reports the highest overall AP at 30.2 and AR10 at 34.1.
+CenterMask2 is the strongest non-transformer method with AP 25.2 and AR10 31.0.
+MaskDINO has the highest AP50 at 51.7. Complete AP, size-stratified AP, and AR
+tables are stored in `reports/latest/statistical_tests.json`.
 
-## Local reproduction
+## Local reference results
 
-`make reproduce-results` completed locally on June 11, 2026.
+The June 11, 2026 run evaluates a simple connected-component reference method
+on deterministic six-class synthetic fluorescence images. It obtains mean
+synthetic AP 42.18 and AP50 50.64.
 
-| Metric | Mean | Std. dev. |
-|---|---:|---:|
-| Dice | 0.907 | 0.013 |
-| Iou | 0.831 | 0.022 |
-| Precision | 0.976 | 0.005 |
-| Predicted Objects | 12.650 | 1.494 |
-| Recall | 0.848 | 0.022 |
-| True Objects | 12.800 | 1.728 |
-
-The benchmark primarily tests pipeline correctness, determinism, and metric
-generation. Evaluation on a legally reusable public microscopy dataset remains
-`NOT_RUN` pending dataset selection and paper review.
+Those values are **not comparable** to the paper's microscopy results because
+the fixture is generated and substantially simpler. Training and evaluation of
+the six deep models on the private 700/200/150 split remain `NOT_RUN`.

@@ -1,0 +1,232 @@
+{
+  "annotations": [
+    {
+      "area": 145,
+      "bbox": [
+        110.0,
+        143.0,
+        13.0,
+        13.0
+      ],
+      "category_id": 1,
+      "id": 1001,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 25,
+      "bbox": [
+        29.0,
+        59.0,
+        5.0,
+        5.0
+      ],
+      "category_id": 1,
+      "id": 1002,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 145,
+      "bbox": [
+        152.0,
+        112.0,
+        13.0,
+        13.0
+      ],
+      "category_id": 1,
+      "id": 1003,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 15,
+      "bbox": [
+        116.0,
+        111.0,
+        5.0,
+        6.0
+      ],
+      "category_id": 2,
+      "id": 1004,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 54,
+      "bbox": [
+        113.0,
+        126.0,
+        9.0,
+        38.0
+      ],
+      "category_id": 2,
+      "id": 1005,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 249,
+      "bbox": [
+        128.0,
+        142.0,
+        17.0,
+        17.0
+      ],
+      "category_id": 3,
+      "id": 1006,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 25,
+      "bbox": [
+        149.0,
+        31.0,
+        5.0,
+        5.0
+      ],
+      "category_id": 3,
+      "id": 1007,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 109,
+      "bbox": [
+        88.0,
+        97.0,
+        11.0,
+        11.0
+      ],
+      "category_id": 3,
+      "id": 1008,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 25,
+      "bbox": [
+        36.0,
+        18.0,
+        5.0,
+        5.0
+      ],
+      "category_id": 4,
+      "id": 1009,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 193,
+      "bbox": [
+        52.0,
+        114.0,
+        15.0,
+        15.0
+      ],
+      "category_id": 4,
+      "id": 1010,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 61,
+      "bbox": [
+        171.0,
+        89.0,
+        19.0,
+        25.0
+      ],
+      "category_id": 5,
+      "id": 1011,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 53,
+      "bbox": [
+        118.0,
+        163.0,
+        14.0,
+        27.0
+      ],
+      "category_id": 5,
+      "id": 1012,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 51,
+      "bbox": [
+        40.0,
+        152.0,
+        17.0,
+        9.0
+      ],
+      "category_id": 5,
+      "id": 1013,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 10,
+      "bbox": [
+        66.0,
+        71.0,
+        2.0,
+        8.0
+      ],
+      "category_id": 6,
+      "id": 1014,
+      "image_id": 1,
+      "iscrowd": 0
+    },
+    {
+      "area": 33,
+      "bbox": [
+        151.0,
+        30.0,
+        11.0,
+        5.0
+      ],
+      "category_id": 6,
+      "id": 1015,
+      "image_id": 1,
+      "iscrowd": 0
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "cell_body"
+    },
+    {
+      "id": 2,
+      "name": "dendrite"
+    },
+    {
+      "id": 3,
+      "name": "vglut2_puncta"
+    },
+    {
+      "id": 4,
+      "name": "mossy_fiber_rosette"
+    },
+    {
+      "id": 5,
+      "name": "parallel_fiber"
+    },
+    {
+      "id": 6,
+      "name": "climbing_fiber"
+    }
+  ],
+  "images": [
+    {
+      "height": 192,
+      "id": 1,
+      "width": 192
+    }
+  ]
+}

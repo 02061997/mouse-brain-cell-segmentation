@@ -1,6 +1,16 @@
-# Mouse Brain Cell Segmentation
+# Mouse Brain Cell Instance Segmentation
 
-Public reference implementation inspired by the CISS 2025 publication.
-The original microscopy dataset was not available for this reconstruction,
-so the executable benchmark uses deterministic synthetic fluorescence
-images and reports separate local results.
+Public research companion for *Mouse Brain Cell Segmentation in Fluorescence
+Microscopy Images* (CISS 2025).
+
+The repository provides the six-class COCO data contract, exact configurations
+for the paper's six CNN/transformer methods, COCO-style AP/AR evaluation
+primitives, and a deterministic synthetic fluorescence fixture. It does not
+redistribute the private 1,050-image dataset or trained model checkpoints.
+
+```bash
+uv sync
+make test
+make reproduce-smoke
+make reproduce-results
+```
