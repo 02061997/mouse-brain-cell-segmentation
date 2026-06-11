@@ -5,7 +5,6 @@ from scipy.ndimage import gaussian_filter
 from skimage.draw import disk
 from skimage.filters import threshold_otsu
 from skimage.measure import label
-from skimage.measure import label
 
 
 def synthetic_image(size=128, cells=18, seed=7):
