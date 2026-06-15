@@ -8,8 +8,10 @@ from .core import (
     MODEL_CONFIGS,
     PUBLISHED_COLUMNS,
     PUBLISHED_RESULTS,
+    PUBLIC_DATASETS,
     coco_record,
     evaluate_instances,
+    instance_overlay,
     reference_segment,
     synthetic_image,
 )
@@ -36,9 +38,9 @@ def main():
     axes[0].imshow(example[0])
     axes[0].set_title("Synthetic merged channels")
     for ax, instances, title in zip(
-        axes[1:], example[1:], ["Ground-truth instances", "Reference predictions"]
+        axes[1:], example[1:], ["Ground-truth instance overlay", "Reference prediction overlay"]
     ):
-        ax.imshow(sum((item.mask for item in instances), start=0), cmap="viridis")
+        ax.imshow(instance_overlay(instances, example[0].shape[:2]))
         ax.set_title(title)
     for ax in axes:
         ax.axis("off")
@@ -61,8 +63,8 @@ def main():
                     "reason": "Private microscopy images and trained checkpoints are not redistributed.",
                 },
                 {
-                    "experiment": "Public microscopy benchmark transfer evaluation",
-                    "reason": "No legally reusable dataset was selected for this reconstruction run.",
+                    "experiment": "BBBC038v1 public microscopy transfer evaluation",
+                    "reason": "Legally reusable CC0 dataset path selected, but transfer evaluation was not run in the latest committed results.",
                 },
             ],
         },
@@ -75,6 +77,7 @@ def main():
             "paper_dataset_included": False,
             "local_source": "deterministic six-class synthetic fluorescence fixture",
             "local_images": len(frame),
+            "optional_public_dataset_extension": PUBLIC_DATASETS["BBBC038v1"],
         },
     )
     save(out / "config.yaml", {"paper_model_configs": MODEL_CONFIGS})

@@ -27,8 +27,8 @@
       "reason": "Private microscopy images and trained checkpoints are not redistributed."
     },
     {
-      "experiment": "Public microscopy benchmark transfer evaluation",
-      "reason": "No legally reusable dataset was selected for this reconstruction run."
+      "experiment": "BBBC038v1 public microscopy transfer evaluation",
+      "reason": "Legally reusable CC0 dataset path selected, but transfer evaluation was not run in the latest committed results."
     }
   ],
   "published_results": {

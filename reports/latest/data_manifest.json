@@ -1,6 +1,14 @@
 {
   "local_images": 30,
   "local_source": "deterministic six-class synthetic fluorescence fixture",
+  "optional_public_dataset_extension": {
+    "included": false,
+    "license": "CC0",
+    "name": "2018 Data Science Bowl nuclei segmentation",
+    "source": "Broad Bioimage Benchmark Collection",
+    "url": "https://bbbc.broadinstitute.org/BBBC038",
+    "use_case": "Optional public fluorescence microscopy instance-segmentation transfer benchmark."
+  },
   "paper_dataset": {
     "images": 1050,
     "test": 150,

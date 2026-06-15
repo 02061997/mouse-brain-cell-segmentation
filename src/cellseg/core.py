@@ -18,6 +18,28 @@ CATEGORIES = (
     "climbing_fiber",
 )
 
+PUBLIC_DATASETS = {
+    "BBBC038v1": {
+        "name": "2018 Data Science Bowl nuclei segmentation",
+        "source": "Broad Bioimage Benchmark Collection",
+        "url": "https://bbbc.broadinstitute.org/BBBC038",
+        "license": "CC0",
+        "use_case": "Optional public fluorescence microscopy instance-segmentation transfer benchmark.",
+        "included": False,
+    }
+}
+
+PALETTE = np.array(
+    [
+        [0.95, 0.20, 0.20],
+        [0.20, 0.70, 0.95],
+        [0.35, 0.85, 0.35],
+        [0.95, 0.75, 0.20],
+        [0.70, 0.40, 0.95],
+        [0.95, 0.40, 0.75],
+    ]
+)
+
 
 @dataclass(frozen=True)
 class Instance:
@@ -159,6 +181,14 @@ def reference_segment(image: np.ndarray) -> list[Instance]:
             mask = components == region.label
             predictions.append(Instance(channel + 1, mask, score=min(0.99, 0.5 + region.area / 500)))
     return predictions
+
+
+def instance_overlay(instances: list[Instance], shape: tuple[int, int]) -> np.ndarray:
+    overlay = np.zeros((*shape, 3), dtype=float)
+    for instance in instances:
+        color = PALETTE[(instance.category_id - 1) % len(PALETTE)]
+        overlay[instance.mask] = np.maximum(overlay[instance.mask], color)
+    return overlay
 
 
 def mask_iou(left: np.ndarray, right: np.ndarray) -> float:
