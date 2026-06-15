@@ -1,4 +1,36 @@
 {
+  "local_reference_results": {
+    "AP": {
+      "mean": 42.17750305250305,
+      "std": 4.439307141040894
+    },
+    "AP50": {
+      "mean": 50.64051689051689,
+      "std": 4.544568025974936
+    },
+    "AP75": {
+      "mean": 43.38649776149776,
+      "std": 6.149285694551335
+    },
+    "AR100": {
+      "mean": 41.422222222222224,
+      "std": 5.923479699440246
+    },
+    "AR75_100": {
+      "mean": 42.666666666666664,
+      "std": 7.550595622391228
+    }
+  },
+  "not_run": [
+    {
+      "experiment": "Six deep-model training/evaluation on private 700/200/150 split",
+      "reason": "Private microscopy images and trained checkpoints are not redistributed."
+    },
+    {
+      "experiment": "Public microscopy benchmark transfer evaluation",
+      "reason": "No legally reusable dataset was selected for this reconstruction run."
+    }
+  ],
   "published_results": {
     "centermask2": {
       "AP": 25.2,

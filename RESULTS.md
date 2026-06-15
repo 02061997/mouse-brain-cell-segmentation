@@ -9,10 +9,11 @@ tables are stored in `reports/latest/statistical_tests.json`.
 
 ## Local reference results
 
-The June 11, 2026 run evaluates a simple connected-component reference method
+The June 15, 2026 run evaluates a simple connected-component reference method
 on deterministic six-class synthetic fluorescence images. It obtains mean
 synthetic AP 42.18 and AP50 50.64.
 
 Those values are **not comparable** to the paper's microscopy results because
 the fixture is generated and substantially simpler. Training and evaluation of
-the six deep models on the private 700/200/150 split remain `NOT_RUN`.
+the six deep models on the private 700/200/150 split remain `NOT_RUN` and are
+recorded explicitly in `reports/latest/statistical_tests.json`.

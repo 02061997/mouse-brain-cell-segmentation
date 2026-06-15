@@ -3,7 +3,7 @@ import argparse
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from .artifacts import environment, output_dir, save
+from .artifacts import environment, output_dir, publish_latest, save
 from .core import (
     MODEL_CONFIGS,
     PUBLISHED_COLUMNS,
@@ -54,6 +54,17 @@ def main():
                 for model, values in PUBLISHED_RESULTS.items()
             },
             "published_results_reproduced": False,
+            "local_reference_results": frame.drop(columns="seed").agg(["mean", "std"]).to_dict(),
+            "not_run": [
+                {
+                    "experiment": "Six deep-model training/evaluation on private 700/200/150 split",
+                    "reason": "Private microscopy images and trained checkpoints are not redistributed.",
+                },
+                {
+                    "experiment": "Public microscopy benchmark transfer evaluation",
+                    "reason": "No legally reusable dataset was selected for this reconstruction run.",
+                },
+            ],
         },
     )
     save(out / "environment.json", environment())
@@ -68,6 +79,8 @@ def main():
     )
     save(out / "config.yaml", {"paper_model_configs": MODEL_CONFIGS})
     (out / "run.log").write_text("completed\n")
+    if not args.smoke:
+        publish_latest(out)
     print(out)
 
 
